@@ -1,16 +1,50 @@
 # github_finder_flutter
 
-A new Flutter project.
+GitHub リポジトリを検索するための Flutter アプリです。
 
-## Getting Started
+## 要件
 
-This project is a starting point for a Flutter application.
+- Flutter SDK（最新の安定版）
+- Dart SDK（最新の安定版）
 
-A few resources to get you started if this is your first Flutter project:
+## セットアップ
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+1. リポジトリをクローン
+   ```bash
+   git clone <repository_url>
+   ```
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+2. プロジェクトのディレクトリに移動
+   ```bash
+   cd github_finder_flutter
+   ```
+
+3. 依存パッケージをインストール
+   ```bash
+    flutter pub get
+    ```
+
+4. アプリを実行
+    ```bash
+    flutter run
+    ```
+
+## 機能
+
+- キーワードで GitHub リポジトリを検索
+- 検索結果にリポジトリ名を表示
+- リポジトリの詳細情報（名前、オーナーアイコン、言語、Star数、Watcher数、Fork数、Issue数）を表示
+
+## 状態管理パッケージについて
+
+このアプリでは、[Provider](https://pub.dev/packages/provider) パッケージを使用して状態管理を行っています。
+
+## API
+
+- GitHub Search Repositories API
+  - [API ドキュメント](https://docs.github.com/en/rest/reference/search#search-repositories)
+  - [API エンドポイント](https://api.github.com/search/repositories)
+
+## ライセンス
+
+このプロジェクトは MIT ライセンスの下でライセンスされています。
