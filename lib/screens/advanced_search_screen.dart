@@ -13,6 +13,7 @@ class AdvancedSearchScreen extends ConsumerStatefulWidget {
 
 class _AdvancedSearchScreenState extends ConsumerState<AdvancedSearchScreen> {
   final _formKey = GlobalKey<FormState>();
+  String? _formErrorMessage;
 
   bool _isFormValid() {
     final searchState = ref.read(searchStateProvider);
@@ -22,11 +23,19 @@ class _AdvancedSearchScreenState extends ConsumerState<AdvancedSearchScreen> {
   }
 
   void _performSearch() {
+    setState(() {
+      _formErrorMessage = null;
+    });
+
     if (_formKey.currentState!.validate() && _isFormValid()) {
       final searchState = ref.read(searchStateProvider);
       final query = searchState.buildSearchQuery();
       ref.read(githubRepositoriesProvider.notifier).searchRepositories(query);
       Navigator.pop(context);
+    } else {
+      setState(() {
+        _formErrorMessage = 'At least one search criteria must be filled in.';
+      });
     }
   }
 
@@ -41,6 +50,13 @@ class _AdvancedSearchScreenState extends ConsumerState<AdvancedSearchScreen> {
         child: ListView(
           padding: const EdgeInsets.all(16.0),
           children: [
+            if (_formErrorMessage != null) ...[
+              Text(
+                _formErrorMessage!,
+                style: const TextStyle(color: Colors.red),
+              ),
+              const SizedBox(height: 10),
+            ],
             TextFormField(
               decoration: const InputDecoration(labelText: 'Search keyword'),
               initialValue: searchState.keyword,
