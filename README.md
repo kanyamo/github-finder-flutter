@@ -24,7 +24,12 @@ GitHub リポジトリを検索するための Flutter アプリです。
     flutter pub get
     ```
 
-4. アプリを実行
+4. pre-commit フックを有効化
+    ```bash
+    pre-commit install
+    ```
+
+5. アプリを実行
     ```bash
     flutter run
     ```
