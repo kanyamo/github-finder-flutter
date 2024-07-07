@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../models/repository.dart';
+import '../widgets/chip.dart';
 
 class RepositoryDetailScreen extends StatelessWidget {
   final Repository repository;
@@ -12,7 +13,7 @@ class RepositoryDetailScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(repository.name),
       ),
-      body: Padding(
+      body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -25,19 +26,61 @@ class RepositoryDetailScreen extends StatelessWidget {
                 ),
                 const SizedBox(width: 16),
                 Expanded(
-                  child: Text(
-                    repository.name,
-                    style: Theme.of(context).textTheme.titleMedium,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        repository.name,
+                        style: Theme.of(context).textTheme.titleLarge,
+                      ),
+                      Text(
+                        repository.fullName,
+                        style: Theme.of(context).textTheme.bodyMedium,
+                      ),
+                    ],
                   ),
                 ),
               ],
             ),
             const SizedBox(height: 16),
-            Text('Language: ${repository.language}'),
-            Text('Stars: ${repository.stars}'),
-            Text('Watchers: ${repository.watchers}'),
-            Text('Forks: ${repository.forks}'),
-            Text('Issues: ${repository.issues}'),
+            if (repository.description != null) ...[
+              Text(
+                repository.description!,
+                style: Theme.of(context).textTheme.bodyLarge,
+              ),
+              const SizedBox(height: 16),
+            ],
+            Wrap(
+              spacing: 8.0,
+              runSpacing: 8.0,
+              children: [
+                RepositoryDetailChip(
+                  icon: Icons.code,
+                  label: 'Language',
+                  value: repository.language ?? 'N/A',
+                ),
+                RepositoryDetailChip(
+                  icon: Icons.star,
+                  label: 'Stars',
+                  value: repository.stars.toString(),
+                ),
+                RepositoryDetailChip(
+                  icon: Icons.remove_red_eye,
+                  label: 'Watchers',
+                  value: repository.watchers.toString(),
+                ),
+                RepositoryDetailChip(
+                  icon: Icons.call_split,
+                  label: 'Forks',
+                  value: repository.forks.toString(),
+                ),
+                RepositoryDetailChip(
+                  icon: Icons.error_outline,
+                  label: 'Issues',
+                  value: repository.issues.toString(),
+                ),
+              ],
+            ),
           ],
         ),
       ),
