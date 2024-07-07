@@ -18,6 +18,7 @@ _$RepositoryImpl _$$RepositoryImplFromJson(Map<String, dynamic> json) =>
       watchers: (json['watchers_count'] as num).toInt(),
       forks: (json['forks_count'] as num).toInt(),
       issues: (json['open_issues_count'] as num).toInt(),
+      htmlUrl: json['html_url'] as String?,
     );
 
 Map<String, dynamic> _$$RepositoryImplToJson(_$RepositoryImpl instance) =>
@@ -32,4 +33,5 @@ Map<String, dynamic> _$$RepositoryImplToJson(_$RepositoryImpl instance) =>
       'watchers_count': instance.watchers,
       'forks_count': instance.forks,
       'open_issues_count': instance.issues,
+      'html_url': instance.htmlUrl,
     };
