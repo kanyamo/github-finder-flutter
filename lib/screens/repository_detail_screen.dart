@@ -4,6 +4,7 @@ import '../models/repository.dart';
 import '../providers/search_state_provider.dart';
 import '../providers/github_repositories_provider.dart';
 import '../widgets/chip.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class RepositoryDetailScreen extends ConsumerWidget {
   final Repository repository;
@@ -104,9 +105,34 @@ class RepositoryDetailScreen extends ConsumerWidget {
                 child: const Text('このユーザーが作成したリポジトリ一覧を検索'),
               ),
             ),
+            if (repository.htmlUrl != null) ...[
+              const SizedBox(height: 24),
+              Center(
+                child: ElevatedButton.icon(
+                  icon: const Icon(Icons.open_in_browser),
+                  onPressed: () {
+                    _launchURL(Uri.parse(repository.htmlUrl!), context);
+                  },
+                  label: const Text('View on GitHub'),
+                ),
+              ),
+            ],
           ],
         ),
       ),
     );
+  }
+
+  Future<void> _launchURL(Uri url, BuildContext context) async {
+    if (await canLaunchUrl(url)) {
+      await launchUrl(url);
+    } else {
+      if (!context.mounted) {
+        return;
+      }
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Could not launch $url')),
+      );
+    }
   }
 }
