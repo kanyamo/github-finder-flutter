@@ -1,20 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'models/enums.dart';
 import 'screens/search_screen.dart';
 import 'screens/settings_screen.dart';
+import 'providers/preferences_provider.dart';
 
 void main() {
   runApp(const ProviderScope(child: MyApp()));
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends ConsumerWidget {
   const MyApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final appPreferences = ref.watch(appPreferencesProvider);
+
     return MaterialApp(
       title: 'GitHub Repository Search',
       theme: ThemeData(
+        brightness: appPreferences.theme == AppTheme.light
+            ? Brightness.light
+            : Brightness.dark,
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
