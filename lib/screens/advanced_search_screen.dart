@@ -63,12 +63,14 @@ class _AdvancedSearchScreenState extends ConsumerState<AdvancedSearchScreen> {
               onChanged: (value) =>
                   ref.read(searchStateProvider.notifier).updateKeyword(value),
             ),
+            const SizedBox(height: 8),
             TextFormField(
               decoration: const InputDecoration(labelText: 'Username'),
               initialValue: searchState.username,
               onChanged: (value) =>
                   ref.read(searchStateProvider.notifier).updateUsername(value),
             ),
+            const SizedBox(height: 8),
             TextFormField(
               decoration: const InputDecoration(labelText: 'Organization'),
               initialValue: searchState.organization,
@@ -76,6 +78,7 @@ class _AdvancedSearchScreenState extends ConsumerState<AdvancedSearchScreen> {
                   .read(searchStateProvider.notifier)
                   .updateOrganization(value),
             ),
+            const SizedBox(height: 16),
             SwitchListTile(
               title: const Text('Search in repository name'),
               value: searchState.searchInName,
@@ -104,6 +107,7 @@ class _AdvancedSearchScreenState extends ConsumerState<AdvancedSearchScreen> {
                   .read(searchStateProvider.notifier)
                   .updateSearchInReadme(value),
             ),
+            const SizedBox(height: 16),
             ElevatedButton(
               onPressed: _performSearch,
               child: const Text('Search'),
