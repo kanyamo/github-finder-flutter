@@ -42,7 +42,7 @@ GitHub リポジトリを検索するための Flutter アプリです。
 
 ## 状態管理パッケージについて
 
-このアプリでは、[Provider](https://pub.dev/packages/provider) パッケージを使用して状態管理を行っています。
+このアプリでは、[Riverpod](https://pub.dev/packages/riverpod) を使用して状態管理を行っています。
 
 ## API
 

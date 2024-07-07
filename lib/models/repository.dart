@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'owner.dart';
 
 part 'repository.freezed.dart';
 part 'repository.g.dart';
@@ -6,13 +7,16 @@ part 'repository.g.dart';
 @freezed
 class Repository with _$Repository {
   factory Repository({
+    required int id,
     required String name,
-    required String ownerAvatarUrl,
-    required String language,
-    required int stars,
-    required int watchers,
-    required int forks,
-    required int issues,
+    @JsonKey(name: 'full_name') required String fullName,
+    required Owner owner,
+    required String? description,
+    required String? language,
+    @JsonKey(name: 'stargazers_count') required int stars,
+    @JsonKey(name: 'watchers_count') required int watchers,
+    @JsonKey(name: 'forks_count') required int forks,
+    @JsonKey(name: 'open_issues_count') required int issues,
   }) = _Repository;
 
   factory Repository.fromJson(Map<String, dynamic> json) =>
