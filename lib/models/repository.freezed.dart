@@ -20,12 +20,20 @@ Repository _$RepositoryFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Repository {
+  int get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
-  String get ownerAvatarUrl => throw _privateConstructorUsedError;
-  String get language => throw _privateConstructorUsedError;
+  @JsonKey(name: 'full_name')
+  String get fullName => throw _privateConstructorUsedError;
+  Owner get owner => throw _privateConstructorUsedError;
+  String? get description => throw _privateConstructorUsedError;
+  String? get language => throw _privateConstructorUsedError;
+  @JsonKey(name: 'stargazers_count')
   int get stars => throw _privateConstructorUsedError;
+  @JsonKey(name: 'watchers_count')
   int get watchers => throw _privateConstructorUsedError;
+  @JsonKey(name: 'forks_count')
   int get forks => throw _privateConstructorUsedError;
+  @JsonKey(name: 'open_issues_count')
   int get issues => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -41,13 +49,18 @@ abstract class $RepositoryCopyWith<$Res> {
       _$RepositoryCopyWithImpl<$Res, Repository>;
   @useResult
   $Res call(
-      {String name,
-      String ownerAvatarUrl,
-      String language,
-      int stars,
-      int watchers,
-      int forks,
-      int issues});
+      {int id,
+      String name,
+      @JsonKey(name: 'full_name') String fullName,
+      Owner owner,
+      String? description,
+      String? language,
+      @JsonKey(name: 'stargazers_count') int stars,
+      @JsonKey(name: 'watchers_count') int watchers,
+      @JsonKey(name: 'forks_count') int forks,
+      @JsonKey(name: 'open_issues_count') int issues});
+
+  $OwnerCopyWith<$Res> get owner;
 }
 
 /// @nodoc
@@ -63,27 +76,42 @@ class _$RepositoryCopyWithImpl<$Res, $Val extends Repository>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? name = null,
-    Object? ownerAvatarUrl = null,
-    Object? language = null,
+    Object? fullName = null,
+    Object? owner = null,
+    Object? description = freezed,
+    Object? language = freezed,
     Object? stars = null,
     Object? watchers = null,
     Object? forks = null,
     Object? issues = null,
   }) {
     return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      ownerAvatarUrl: null == ownerAvatarUrl
-          ? _value.ownerAvatarUrl
-          : ownerAvatarUrl // ignore: cast_nullable_to_non_nullable
+      fullName: null == fullName
+          ? _value.fullName
+          : fullName // ignore: cast_nullable_to_non_nullable
               as String,
-      language: null == language
+      owner: null == owner
+          ? _value.owner
+          : owner // ignore: cast_nullable_to_non_nullable
+              as Owner,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+      language: freezed == language
           ? _value.language
           : language // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       stars: null == stars
           ? _value.stars
           : stars // ignore: cast_nullable_to_non_nullable
@@ -102,6 +130,14 @@ class _$RepositoryCopyWithImpl<$Res, $Val extends Repository>
               as int,
     ) as $Val);
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $OwnerCopyWith<$Res> get owner {
+    return $OwnerCopyWith<$Res>(_value.owner, (value) {
+      return _then(_value.copyWith(owner: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -113,13 +149,19 @@ abstract class _$$RepositoryImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String name,
-      String ownerAvatarUrl,
-      String language,
-      int stars,
-      int watchers,
-      int forks,
-      int issues});
+      {int id,
+      String name,
+      @JsonKey(name: 'full_name') String fullName,
+      Owner owner,
+      String? description,
+      String? language,
+      @JsonKey(name: 'stargazers_count') int stars,
+      @JsonKey(name: 'watchers_count') int watchers,
+      @JsonKey(name: 'forks_count') int forks,
+      @JsonKey(name: 'open_issues_count') int issues});
+
+  @override
+  $OwnerCopyWith<$Res> get owner;
 }
 
 /// @nodoc
@@ -133,27 +175,42 @@ class __$$RepositoryImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? name = null,
-    Object? ownerAvatarUrl = null,
-    Object? language = null,
+    Object? fullName = null,
+    Object? owner = null,
+    Object? description = freezed,
+    Object? language = freezed,
     Object? stars = null,
     Object? watchers = null,
     Object? forks = null,
     Object? issues = null,
   }) {
     return _then(_$RepositoryImpl(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      ownerAvatarUrl: null == ownerAvatarUrl
-          ? _value.ownerAvatarUrl
-          : ownerAvatarUrl // ignore: cast_nullable_to_non_nullable
+      fullName: null == fullName
+          ? _value.fullName
+          : fullName // ignore: cast_nullable_to_non_nullable
               as String,
-      language: null == language
+      owner: null == owner
+          ? _value.owner
+          : owner // ignore: cast_nullable_to_non_nullable
+              as Owner,
+      description: freezed == description
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+      language: freezed == language
           ? _value.language
           : language // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       stars: null == stars
           ? _value.stars
           : stars // ignore: cast_nullable_to_non_nullable
@@ -178,35 +235,49 @@ class __$$RepositoryImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$RepositoryImpl implements _Repository {
   _$RepositoryImpl(
-      {required this.name,
-      required this.ownerAvatarUrl,
+      {required this.id,
+      required this.name,
+      @JsonKey(name: 'full_name') required this.fullName,
+      required this.owner,
+      required this.description,
       required this.language,
-      required this.stars,
-      required this.watchers,
-      required this.forks,
-      required this.issues});
+      @JsonKey(name: 'stargazers_count') required this.stars,
+      @JsonKey(name: 'watchers_count') required this.watchers,
+      @JsonKey(name: 'forks_count') required this.forks,
+      @JsonKey(name: 'open_issues_count') required this.issues});
 
   factory _$RepositoryImpl.fromJson(Map<String, dynamic> json) =>
       _$$RepositoryImplFromJson(json);
 
   @override
+  final int id;
+  @override
   final String name;
   @override
-  final String ownerAvatarUrl;
+  @JsonKey(name: 'full_name')
+  final String fullName;
   @override
-  final String language;
+  final Owner owner;
   @override
+  final String? description;
+  @override
+  final String? language;
+  @override
+  @JsonKey(name: 'stargazers_count')
   final int stars;
   @override
+  @JsonKey(name: 'watchers_count')
   final int watchers;
   @override
+  @JsonKey(name: 'forks_count')
   final int forks;
   @override
+  @JsonKey(name: 'open_issues_count')
   final int issues;
 
   @override
   String toString() {
-    return 'Repository(name: $name, ownerAvatarUrl: $ownerAvatarUrl, language: $language, stars: $stars, watchers: $watchers, forks: $forks, issues: $issues)';
+    return 'Repository(id: $id, name: $name, fullName: $fullName, owner: $owner, description: $description, language: $language, stars: $stars, watchers: $watchers, forks: $forks, issues: $issues)';
   }
 
   @override
@@ -214,9 +285,13 @@ class _$RepositoryImpl implements _Repository {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$RepositoryImpl &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.ownerAvatarUrl, ownerAvatarUrl) ||
-                other.ownerAvatarUrl == ownerAvatarUrl) &&
+            (identical(other.fullName, fullName) ||
+                other.fullName == fullName) &&
+            (identical(other.owner, owner) || other.owner == owner) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
             (identical(other.language, language) ||
                 other.language == language) &&
             (identical(other.stars, stars) || other.stars == stars) &&
@@ -228,8 +303,8 @@ class _$RepositoryImpl implements _Repository {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, name, ownerAvatarUrl, language,
-      stars, watchers, forks, issues);
+  int get hashCode => Object.hash(runtimeType, id, name, fullName, owner,
+      description, language, stars, watchers, forks, issues);
 
   @JsonKey(ignore: true)
   @override
@@ -247,30 +322,45 @@ class _$RepositoryImpl implements _Repository {
 
 abstract class _Repository implements Repository {
   factory _Repository(
-      {required final String name,
-      required final String ownerAvatarUrl,
-      required final String language,
-      required final int stars,
-      required final int watchers,
-      required final int forks,
-      required final int issues}) = _$RepositoryImpl;
+          {required final int id,
+          required final String name,
+          @JsonKey(name: 'full_name') required final String fullName,
+          required final Owner owner,
+          required final String? description,
+          required final String? language,
+          @JsonKey(name: 'stargazers_count') required final int stars,
+          @JsonKey(name: 'watchers_count') required final int watchers,
+          @JsonKey(name: 'forks_count') required final int forks,
+          @JsonKey(name: 'open_issues_count') required final int issues}) =
+      _$RepositoryImpl;
 
   factory _Repository.fromJson(Map<String, dynamic> json) =
       _$RepositoryImpl.fromJson;
 
   @override
+  int get id;
+  @override
   String get name;
   @override
-  String get ownerAvatarUrl;
+  @JsonKey(name: 'full_name')
+  String get fullName;
   @override
-  String get language;
+  Owner get owner;
   @override
+  String? get description;
+  @override
+  String? get language;
+  @override
+  @JsonKey(name: 'stargazers_count')
   int get stars;
   @override
+  @JsonKey(name: 'watchers_count')
   int get watchers;
   @override
+  @JsonKey(name: 'forks_count')
   int get forks;
   @override
+  @JsonKey(name: 'open_issues_count')
   int get issues;
   @override
   @JsonKey(ignore: true)
