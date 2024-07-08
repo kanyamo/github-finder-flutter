@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../providers/github_repositories_provider.dart';
 import '../providers/search_state_provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AdvancedSearchScreen extends ConsumerStatefulWidget {
   const AdvancedSearchScreen({super.key});
@@ -34,7 +35,7 @@ class _AdvancedSearchScreenState extends ConsumerState<AdvancedSearchScreen> {
       Navigator.pop(context);
     } else {
       setState(() {
-        _formErrorMessage = 'At least one search criteria must be filled in.';
+        _formErrorMessage = AppLocalizations.of(context)!.advanced_search_error;
       });
     }
   }
@@ -44,7 +45,9 @@ class _AdvancedSearchScreenState extends ConsumerState<AdvancedSearchScreen> {
     final searchState = ref.watch(searchStateProvider);
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Advanced Search')),
+      appBar: AppBar(
+        title: Text(AppLocalizations.of(context)!.advanced_search_title),
+      ),
       body: Form(
         key: _formKey,
         child: ListView(
@@ -58,21 +61,30 @@ class _AdvancedSearchScreenState extends ConsumerState<AdvancedSearchScreen> {
               const SizedBox(height: 10),
             ],
             TextFormField(
-              decoration: const InputDecoration(labelText: 'Search keyword'),
+              decoration: InputDecoration(
+                labelText:
+                    AppLocalizations.of(context)!.advanced_search_keyword,
+              ),
               initialValue: searchState.keyword,
               onChanged: (value) =>
                   ref.read(searchStateProvider.notifier).updateKeyword(value),
             ),
             const SizedBox(height: 8),
             TextFormField(
-              decoration: const InputDecoration(labelText: 'Username'),
+              decoration: InputDecoration(
+                labelText:
+                    AppLocalizations.of(context)!.advanced_search_username,
+              ),
               initialValue: searchState.username,
               onChanged: (value) =>
                   ref.read(searchStateProvider.notifier).updateUsername(value),
             ),
             const SizedBox(height: 8),
             TextFormField(
-              decoration: const InputDecoration(labelText: 'Organization'),
+              decoration: InputDecoration(
+                labelText:
+                    AppLocalizations.of(context)!.advanced_search_organization,
+              ),
               initialValue: searchState.organization,
               onChanged: (value) => ref
                   .read(searchStateProvider.notifier)
@@ -80,28 +92,35 @@ class _AdvancedSearchScreenState extends ConsumerState<AdvancedSearchScreen> {
             ),
             const SizedBox(height: 16),
             SwitchListTile(
-              title: const Text('Search in repository name'),
+              title:
+                  Text(AppLocalizations.of(context)!.advanced_search_in_name),
               value: searchState.searchInName,
               onChanged: (value) => ref
                   .read(searchStateProvider.notifier)
                   .updateSearchInName(value),
             ),
             SwitchListTile(
-              title: const Text('Search in description'),
+              title: Text(
+                AppLocalizations.of(context)!.advanced_search_in_description,
+              ),
               value: searchState.searchInDescription,
               onChanged: (value) => ref
                   .read(searchStateProvider.notifier)
                   .updateSearchInDescription(value),
             ),
             SwitchListTile(
-              title: const Text('Search in topics'),
+              title: Text(
+                AppLocalizations.of(context)!.advanced_search_in_topics,
+              ),
               value: searchState.searchInTopics,
               onChanged: (value) => ref
                   .read(searchStateProvider.notifier)
                   .updateSearchInTopics(value),
             ),
             SwitchListTile(
-              title: const Text('Search in README'),
+              title: Text(
+                AppLocalizations.of(context)!.advanced_search_in_readme,
+              ),
               value: searchState.searchInReadme,
               onChanged: (value) => ref
                   .read(searchStateProvider.notifier)
@@ -110,7 +129,7 @@ class _AdvancedSearchScreenState extends ConsumerState<AdvancedSearchScreen> {
             const SizedBox(height: 16),
             ElevatedButton(
               onPressed: _performSearch,
-              child: const Text('Search'),
+              child: Text(AppLocalizations.of(context)!.advanced_search_button),
             ),
           ],
         ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../models/enums.dart';
 import '../providers/preferences_provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SettingsScreen extends ConsumerWidget {
   const SettingsScreen({super.key});
@@ -12,19 +13,21 @@ class SettingsScreen extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Settings'),
+        title: Text(AppLocalizations.of(context)!.settings_title),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              'Language',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            Text(
+              AppLocalizations.of(context)!.settings_language,
+              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             ListTile(
-              title: const Text('English'),
+              title: Text(
+                AppLocalizations.of(context)!.settings_language_english,
+              ),
               leading: Radio<AppLanguage>(
                 value: AppLanguage.english,
                 groupValue: appPreferences.language,
@@ -38,7 +41,9 @@ class SettingsScreen extends ConsumerWidget {
               ),
             ),
             ListTile(
-              title: const Text('Japanese'),
+              title: Text(
+                AppLocalizations.of(context)!.settings_language_japanese,
+              ),
               leading: Radio<AppLanguage>(
                 value: AppLanguage.japanese,
                 groupValue: appPreferences.language,
@@ -52,12 +57,12 @@ class SettingsScreen extends ConsumerWidget {
               ),
             ),
             const SizedBox(height: 20),
-            const Text(
-              'Theme',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            Text(
+              AppLocalizations.of(context)!.settings_theme,
+              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             ListTile(
-              title: const Text('Light'),
+              title: Text(AppLocalizations.of(context)!.settings_theme_light),
               leading: Radio<AppTheme>(
                 value: AppTheme.light,
                 groupValue: appPreferences.theme,
@@ -69,7 +74,7 @@ class SettingsScreen extends ConsumerWidget {
               ),
             ),
             ListTile(
-              title: const Text('Dark'),
+              title: Text(AppLocalizations.of(context)!.settings_theme_dark),
               leading: Radio<AppTheme>(
                 value: AppTheme.dark,
                 groupValue: appPreferences.theme,

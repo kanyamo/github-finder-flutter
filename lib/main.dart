@@ -4,6 +4,8 @@ import 'models/enums.dart';
 import 'screens/search_screen.dart';
 import 'screens/settings_screen.dart';
 import 'providers/preferences_provider.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void main() {
   runApp(const ProviderScope(child: MyApp()));
@@ -25,7 +27,20 @@ class MyApp extends ConsumerWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
+      localizationsDelegates: const [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: const [
+        Locale('en'),
+        Locale('ja'),
+      ],
       home: const HomeScreen(),
+      locale: appPreferences.language == AppLanguage.english
+          ? const Locale('en')
+          : const Locale('ja'),
     );
   }
 }
@@ -56,14 +71,14 @@ class HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       body: _pages[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
+        items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            label: 'Search',
+            icon: const Icon(Icons.search),
+            label: AppLocalizations.of(context)!.label_search,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: 'Settings',
+            icon: const Icon(Icons.settings),
+            label: AppLocalizations.of(context)!.label_settings,
           ),
         ],
         currentIndex: _selectedIndex,
