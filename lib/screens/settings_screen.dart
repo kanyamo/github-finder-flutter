@@ -4,6 +4,7 @@ import '../models/enums.dart';
 import '../providers/preferences_provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+/// 設定画面
 class SettingsScreen extends ConsumerWidget {
   const SettingsScreen({super.key});
 
@@ -32,6 +33,7 @@ class SettingsScreen extends ConsumerWidget {
                 value: AppLanguage.english,
                 groupValue: appPreferences.language,
                 onChanged: (AppLanguage? value) {
+                  // アプリ全体に反映される上に、その設定が本体に保存される
                   if (value != null) {
                     ref
                         .read(appPreferencesProvider.notifier)

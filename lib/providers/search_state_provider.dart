@@ -1,5 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+/// 検索状態
 class SearchState {
   final String keyword;
   final String username;
@@ -13,6 +14,7 @@ class SearchState {
     this.keyword = '',
     this.username = '',
     this.organization = '',
+    // 初期値を簡易検索と合わせている(参考: https://docs.github.com/ja/rest/search/search?apiVersion=2022-11-28#search-repositories)
     this.searchInName = true,
     this.searchInDescription = true,
     this.searchInTopics = true,
@@ -61,6 +63,7 @@ class SearchState {
   }
 }
 
+/// 検索状態の更新を行うStateNotifier
 class SearchStateNotifier extends StateNotifier<SearchState> {
   SearchStateNotifier() : super(SearchState());
 
