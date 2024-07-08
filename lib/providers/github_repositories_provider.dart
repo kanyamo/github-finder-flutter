@@ -5,19 +5,24 @@ import '../models/repository.dart';
 
 final githubRepositoriesProvider = StateNotifierProvider<
     GitHubRepositoriesNotifier, AsyncValue<List<Repository>>>((ref) {
-  return GitHubRepositoriesNotifier();
+  return GitHubRepositoriesNotifier(httpClient: http.Client());
 });
 
 class GitHubRepositoriesNotifier
     extends StateNotifier<AsyncValue<List<Repository>>> {
-  GitHubRepositoriesNotifier() : super(const AsyncValue.data([]));
+  final http.Client httpClient;
+
+  GitHubRepositoriesNotifier({
+    AsyncValue<List<Repository>> state = const AsyncValue.data([]),
+    required this.httpClient,
+  }) : super(state);
 
   Future<void> searchRepositories(String query) async {
     state = const AsyncValue.loading();
 
     try {
       final encodedQuery = Uri.encodeComponent(query);
-      final response = await http.get(
+      final response = await httpClient.get(
         Uri.parse('https://api.github.com/search/repositories?q=$encodedQuery'),
       );
 
