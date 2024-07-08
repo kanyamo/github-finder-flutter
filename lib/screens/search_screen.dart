@@ -5,6 +5,7 @@ import '../providers/search_state_provider.dart';
 import '../widgets/repository_list_item.dart';
 import 'repository_detail_screen.dart';
 import 'advanced_search_screen.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SearchScreen extends ConsumerStatefulWidget {
   const SearchScreen({super.key});
@@ -50,7 +51,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('GitHub Repository Search'),
+        title: Text(AppLocalizations.of(context)!.search_screen_title),
         actions: [
           IconButton(
             icon: const Icon(Icons.filter_list),
@@ -71,7 +72,8 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
             padding: const EdgeInsets.all(8.0),
             child: TextField(
               decoration: InputDecoration(
-                labelText: 'Search repositories',
+                labelText: AppLocalizations.of(context)!
+                    .search_screen_search_repositories,
                 border: const OutlineInputBorder(),
                 suffixIcon: IconButton(
                   icon: const Icon(Icons.search),
@@ -89,7 +91,12 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
             child: repositoriesState.when(
               data: (repositories) {
                 if (repositories.isEmpty) {
-                  return const Center(child: Text('No repositories found'));
+                  return Center(
+                    child: Text(
+                      AppLocalizations.of(context)!
+                          .search_screen_no_repositories,
+                    ),
+                  );
                 }
                 return ListView.builder(
                   itemCount: repositories.length,
@@ -111,7 +118,12 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
                 );
               },
               loading: () => const Center(child: CircularProgressIndicator()),
-              error: (error, stack) => Center(child: Text('Error: $error')),
+              error: (error, stack) => Center(
+                child: Text(
+                  AppLocalizations.of(context)!
+                      .search_screen_error(error.toString()),
+                ),
+              ),
             ),
           ),
         ],

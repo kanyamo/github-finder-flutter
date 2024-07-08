@@ -1,0 +1,49 @@
+{
+  "@@locale": "en",
+  "title": "GitHub Repository Search",
+  "label_search": "Search",
+  "label_settings": "Settings",
+  "settings_title": "Settings",
+  "settings_language": "Language",
+  "settings_language_english": "English",
+  "settings_language_japanese": "Japanese",
+  "settings_theme": "Theme",
+  "settings_theme_light": "Light",
+  "settings_theme_dark": "Dark",
+  "repository_detail_language": "Language",
+  "repository_detail_stars": "Stars",
+  "repository_detail_watchers": "Watchers",
+  "repository_detail_forks": "Forks",
+  "repository_detail_issues": "Issues",
+  "repository_detail_search_user_repos": "Search repositories created by this user",
+  "repository_detail_view_on_github": "View on GitHub",
+  "advanced_search_title": "Advanced Search",
+  "advanced_search_error": "* At least one search criteria must be filled in.",
+  "advanced_search_keyword": "Search keyword",
+  "advanced_search_username": "Username",
+  "advanced_search_organization": "Organization",
+  "advanced_search_in_name": "Search in repository name",
+  "advanced_search_in_description": "Search in description",
+  "advanced_search_in_topics": "Search in topics",
+  "advanced_search_in_readme": "Search in README",
+  "advanced_search_button": "Search",
+  "search_screen_title": "GitHub Repository Search",
+  "search_screen_search_repositories": "Search repositories",
+  "search_screen_no_repositories": "No repositories found",
+  "search_screen_error": "Error: {error}",
+  "@search_screen_error": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "repository_list_item_stars": "Stars: {stars}",
+  "@repository_list_item_stars": {
+    "placeholders": {
+      "stars": {
+        "type": "int"
+      }
+    }
+  }
+}

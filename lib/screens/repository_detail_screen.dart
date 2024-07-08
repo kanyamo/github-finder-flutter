@@ -5,6 +5,7 @@ import '../providers/search_state_provider.dart';
 import '../providers/github_repositories_provider.dart';
 import '../widgets/chip.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class RepositoryDetailScreen extends ConsumerWidget {
   final Repository repository;
@@ -60,27 +61,29 @@ class RepositoryDetailScreen extends ConsumerWidget {
               children: [
                 RepositoryDetailChip(
                   icon: Icons.code,
-                  label: 'Language',
+                  label:
+                      AppLocalizations.of(context)!.repository_detail_language,
                   value: repository.language ?? 'N/A',
                 ),
                 RepositoryDetailChip(
                   icon: Icons.star,
-                  label: 'Stars',
+                  label: AppLocalizations.of(context)!.repository_detail_stars,
                   value: repository.stars.toString(),
                 ),
                 RepositoryDetailChip(
                   icon: Icons.remove_red_eye,
-                  label: 'Watchers',
+                  label:
+                      AppLocalizations.of(context)!.repository_detail_watchers,
                   value: repository.watchers.toString(),
                 ),
                 RepositoryDetailChip(
                   icon: Icons.call_split,
-                  label: 'Forks',
+                  label: AppLocalizations.of(context)!.repository_detail_forks,
                   value: repository.forks.toString(),
                 ),
                 RepositoryDetailChip(
                   icon: Icons.error_outline,
-                  label: 'Issues',
+                  label: AppLocalizations.of(context)!.repository_detail_issues,
                   value: repository.issues.toString(),
                 ),
               ],
@@ -102,7 +105,10 @@ class RepositoryDetailScreen extends ConsumerWidget {
                       .searchRepositories(query);
                   Navigator.of(context).pop();
                 },
-                child: const Text('このユーザーが作成したリポジトリ一覧を検索'),
+                child: Text(
+                  AppLocalizations.of(context)!
+                      .repository_detail_search_user_repos,
+                ),
               ),
             ),
             if (repository.htmlUrl != null) ...[
@@ -113,7 +119,10 @@ class RepositoryDetailScreen extends ConsumerWidget {
                   onPressed: () {
                     _launchURL(Uri.parse(repository.htmlUrl!), context);
                   },
-                  label: const Text('View on GitHub'),
+                  label: Text(
+                    AppLocalizations.of(context)!
+                        .repository_detail_view_on_github,
+                  ),
                 ),
               ),
             ],

@@ -1,0 +1,49 @@
+{
+  "@@locale": "ja",
+  "title": "GitHub Repository Search",
+  "label_search": "検索",
+  "label_settings": "設定",
+  "settings_title": "設定",
+  "settings_language": "言語",
+  "settings_language_english": "英語",
+  "settings_language_japanese": "日本語",
+  "settings_theme": "テーマ",
+  "settings_theme_light": "ライト",
+  "settings_theme_dark": "ダーク",
+  "repository_detail_language": "言語",
+  "repository_detail_stars": "Star数",
+  "repository_detail_watchers": "Watcher数",
+  "repository_detail_forks": "Fork数",
+  "repository_detail_issues": "Issue数",
+  "repository_detail_search_user_repos": "このユーザーが作成したリポジトリ一覧を検索",
+  "repository_detail_view_on_github": "GitHubで見る",
+  "advanced_search_title": "詳細検索",
+  "advanced_search_error": "※少なくとも1つの検索条件を入力してください。",
+  "advanced_search_keyword": "検索キーワード",
+  "advanced_search_username": "ユーザー名",
+  "advanced_search_organization": "Organization",
+  "advanced_search_in_name": "リポジトリ名で検索",
+  "advanced_search_in_description": "説明で検索",
+  "advanced_search_in_topics": "トピックで検索",
+  "advanced_search_in_readme": "READMEで検索",
+  "advanced_search_button": "検索",
+  "search_screen_title": "GitHub リポジトリ検索",
+  "search_screen_search_repositories": "リポジトリを検索",
+  "search_screen_no_repositories": "リポジトリが見つかりません",
+  "search_screen_error": "エラー: {error}",
+  "@search_screen_error": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "repository_list_item_stars": "Star数: {stars}",
+  "@repository_list_item_stars": {
+    "placeholders": {
+      "stars": {
+        "type": "int"
+      }
+    }
+  }
+}

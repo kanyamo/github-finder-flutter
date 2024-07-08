@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../models/repository.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class RepositoryListItem extends StatelessWidget {
   final Repository repository;
@@ -15,7 +16,10 @@ class RepositoryListItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       title: Text(repository.name),
-      subtitle: Text('Stars: ${repository.stars}'),
+      subtitle: Text(
+        AppLocalizations.of(context)!
+            .repository_list_item_stars(repository.stars),
+      ),
       leading: CircleAvatar(
         backgroundImage: NetworkImage(repository.owner.avatarUrl),
       ),
