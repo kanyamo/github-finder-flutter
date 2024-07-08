@@ -4,6 +4,7 @@ import '../providers/github_repositories_provider.dart';
 import '../providers/search_state_provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+/// 詳細検索画面
 class AdvancedSearchScreen extends ConsumerStatefulWidget {
   const AdvancedSearchScreen({super.key});
 
@@ -17,6 +18,7 @@ class _AdvancedSearchScreenState extends ConsumerState<AdvancedSearchScreen> {
   String? _formErrorMessage;
 
   bool _isFormValid() {
+    // キーワード、ユーザー名、組織名のいずれかが入力されていることを確認
     final searchState = ref.read(searchStateProvider);
     return searchState.keyword.isNotEmpty ||
         searchState.username.isNotEmpty ||
@@ -53,6 +55,7 @@ class _AdvancedSearchScreenState extends ConsumerState<AdvancedSearchScreen> {
         child: ListView(
           padding: const EdgeInsets.all(16.0),
           children: [
+            // エラーメッセージがあれば表示
             if (_formErrorMessage != null) ...[
               Text(
                 _formErrorMessage!,
@@ -60,6 +63,7 @@ class _AdvancedSearchScreenState extends ConsumerState<AdvancedSearchScreen> {
               ),
               const SizedBox(height: 10),
             ],
+            // キーワード、ユーザー名、組織名の入力フォーム
             TextFormField(
               decoration: InputDecoration(
                 labelText:
@@ -90,6 +94,7 @@ class _AdvancedSearchScreenState extends ConsumerState<AdvancedSearchScreen> {
                   .read(searchStateProvider.notifier)
                   .updateOrganization(value),
             ),
+            // 検索対象の選択スイッチ
             const SizedBox(height: 16),
             SwitchListTile(
               title:

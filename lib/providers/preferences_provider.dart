@@ -14,6 +14,8 @@ class AppPreferences {
   AppPreferences({required this.language, required this.theme});
 }
 
+/// アプリの設定を管理する `StateNotifier`
+/// SharedPreferencesを使って設定を永続化する
 class AppPreferencesNotifier extends StateNotifier<AppPreferences> {
   AppPreferencesNotifier()
       : super(

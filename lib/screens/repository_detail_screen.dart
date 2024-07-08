@@ -8,6 +8,8 @@ import '../widgets/chip.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+/// リポジトリ詳細画面
+/// 初期化時に表示するリポジトリ情報を受け取る
 class RepositoryDetailScreen extends ConsumerWidget {
   final Repository repository;
 
@@ -26,6 +28,7 @@ class RepositoryDetailScreen extends ConsumerWidget {
           children: [
             Row(
               children: [
+                // テストモードでHTTP通信ができない場合は、代わりにローカルから画像を読み込む
                 ConditionalCircleAvatar(
                   networkUrl: repository.owner.avatarUrl,
                   assetPath: 'assets/images/default_user.png',

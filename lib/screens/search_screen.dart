@@ -7,6 +7,7 @@ import 'repository_detail_screen.dart';
 import 'advanced_search_screen.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+/// 基本検索画面
 class SearchScreen extends ConsumerStatefulWidget {
   const SearchScreen({super.key});
 
@@ -89,8 +90,10 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
           ),
           Expanded(
             child: repositoriesState.when(
+              // ローディング中やエラーの場合は、それに応じたウィジェットを表示
               data: (repositories) {
                 if (repositories.isEmpty) {
+                  // リポジトリが0件の場合は、検索結果の代わりにメッセージを表示
                   return Center(
                     child: Text(
                       AppLocalizations.of(context)!

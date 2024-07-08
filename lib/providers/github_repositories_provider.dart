@@ -8,6 +8,7 @@ final githubRepositoriesProvider = StateNotifierProvider<
   return GitHubRepositoriesNotifier(httpClient: http.Client());
 });
 
+/// GitHubのリポジトリを検索する `StateNotifier`
 class GitHubRepositoriesNotifier
     extends StateNotifier<AsyncValue<List<Repository>>> {
   final http.Client httpClient;
@@ -33,10 +34,12 @@ class GitHubRepositoriesNotifier
             .toList();
         state = AsyncValue.data(repositories);
       } else {
+        // 200以外のステータスコードが返ってきた場合
         state =
             AsyncValue.error('Failed to load repositories', StackTrace.current);
       }
     } catch (e, stack) {
+      // ネットワークエラーなどが発生した場合
       state = AsyncValue.error('An error occurred: $e', stack);
     }
   }
