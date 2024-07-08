@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:github_finder_flutter/widgets/conditional_image.dart';
 import '../models/repository.dart';
 import '../providers/search_state_provider.dart';
 import '../providers/github_repositories_provider.dart';
@@ -25,8 +26,9 @@ class RepositoryDetailScreen extends ConsumerWidget {
           children: [
             Row(
               children: [
-                CircleAvatar(
-                  backgroundImage: NetworkImage(repository.owner.avatarUrl),
+                ConditionalCircleAvatar(
+                  networkUrl: repository.owner.avatarUrl,
+                  assetPath: 'assets/images/default_user.png',
                   radius: 30,
                 ),
                 const SizedBox(width: 16),
